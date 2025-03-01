@@ -5,15 +5,12 @@ import './App.css';
 // Import prettier for code formatting
 import prettier from 'prettier';
 import parserBabel from 'prettier/parser-babel';
-import parserHtml from 'prettier/parser-html';
-import parserCss from 'prettier/parser-postcss';
 
 function App() {
   const [code, setCode] = useState('');
   const [language, setLanguage] = useState('javascript');
   const [theme, setTheme] = useState('dark');
   const [processedCode, setProcessedCode] = useState('');
-  const [isProcessed, setIsProcessed] = useState(false);
   const [copySuccess, setCopySuccess] = useState(false);
 
   // Apply theme to document body
@@ -32,7 +29,7 @@ function App() {
   ];
 
   // Function to remove comments based on language
-  const removeComments = (sourceCode, lang) => {
+  const removeComments = (sourceCode: string, lang: string) => {
     if (!sourceCode) return '';
     
     let result = sourceCode;
@@ -63,7 +60,7 @@ function App() {
   };
 
   // Function to beautify code based on language
-  const beautifyCode = async (sourceCode, lang) => {
+  const beautifyCode = async (sourceCode: string, lang: string) => {
     if (!sourceCode) return '';
     
     try {
@@ -102,7 +99,6 @@ function App() {
     const beautified = await beautifyCode(withoutComments, language);
     
     setProcessedCode(beautified);
-    setIsProcessed(true);
   };
 
   // Toggle theme between light and dark
@@ -164,7 +160,7 @@ function App() {
             placeholder="Paste your code here..."
             onChange={(e) => {
               setCode(e.target.value);
-              setIsProcessed(false);
+              // Reset processed state when input changes
             }}
             padding={15}
             style={{
