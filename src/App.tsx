@@ -210,7 +210,7 @@ function App() {
       </div>
 
       <footer>
-        <p>© {new Date().getFullYear()} NoComments - Clean your code with ease</p>
+        <p>© {new Date().getFullYear()} Bhumit Chaudhry. All rights Reserved.</p>
       </footer>
     </div>
   );
